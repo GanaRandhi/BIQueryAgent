@@ -1,6 +1,7 @@
 # BI Query Agent
 
 ## 📂 Folder Structure
+```
 bi_query_agent/
 ├── retrieval/
 │   └── paged_rag.py         # Logic for "Page" indexing and retrieval
@@ -12,3 +13,4 @@ bi_query_agent/
 │   └── database_mcp.py      # Extended to support "Page" fetching
 ├── state.py
 └── graph.py
+```
