@@ -1,16 +1,18 @@
 # BI Query Agent
 
 ## 📂 Folder Structure - Gemini
+
 ```
 bi_query_agent/
+├── mcp/
+│   └── database_server.py    # FastMCP Server: DB access & Schema Paging
 ├── retrieval/
-│   └── paged_rag.py         # Logic for "Page" indexing and retrieval
+│   └── attention_rag.py     # Paged Attention: Memory & Block Management
 ├── agents/
-│   ├── schema_reasoner.py   # Uses RAISE logic to identify "Pages"
-│   ├── sql_generator.py     # Incremental SQL construction node
-│   └── prompts.py           # Centralized System Prompts (RAISE-aligned)
-├── mcp_server/
-│   └── database_mcp.py      # Extended to support "Page" fetching
-├── state.py
-└── graph.py
+│   ├── prompts.py           # RAISE-aligned System Prompts
+│   ├── nodes.py             # LangGraph Node implementations
+│   └── planner.py           # Logical Execution Plan (LEP) logic
+├── state.py                 # LangGraph State & Type definitions
+├── graph.py                 # The State Machine (The "Brain")
+└── main.py                  # Entry Point
 ```

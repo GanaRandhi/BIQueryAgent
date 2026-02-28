@@ -1,18 +1,19 @@
-from typing import TypedDict, Annotated, List, Optional
+from typing import Annotated, List, TypedDict, Optional
 from langgraph.graph.message import add_messages
 
+class SchemaPage(TypedDict):
+    table_name: str
+    content: str  # DDL + Samples
+    attention_score: float
+
 class AgentState(TypedDict):
-    # Tracks the chat history
+    # Standard conversation history
     messages: Annotated[list, add_messages]
-    # The refined schema subset relevant to the current question
-    schema_context: str
-    # The current iteration of the query plan
-    query_plan: List[str]
-    # The generated SQL
-    current_sql: str
-    # Results from intermediate execution
-    execution_result: Optional[str]
-    # Number of refinement loops performed
+    # Paged Attention RAG: The subset of schema currently being 'attended'
+    active_pages: List[SchemaPage]
+    # The 'RAISE' logical plan (steps before SQL)
+    logical_plan: Optional[str]
+    current_sql: Optional[str]
+    # Iteration tracking for self-correction
     iteration_count: int
-    # Quality Assurance feedback
-    qa_feedback: Optional[str]
+    error_log: Optional[str]
