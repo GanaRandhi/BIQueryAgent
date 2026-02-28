@@ -1,6 +1,6 @@
 # BI Query Agent
 
-## 📂 Folder Structure
+## 📂 Folder Structure - Gemini
 ```
 bi_query_agent/
 ├── retrieval/
